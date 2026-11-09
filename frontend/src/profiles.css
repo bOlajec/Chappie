@@ -1,0 +1,64 @@
+.manage-assistants {width: 100%; margin-bottom: 12px; justify-content: flex-start; font-size: 20px; padding-inline: 9px;}
+.assistant-bar {display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; padding: 9px 23px; border-bottom: 1px solid var(--soft-line); background: var(--canvas);}
+.assistant-bar > label {display: flex; align-items: center; gap: 10px; font-family: var(--pixel-font); font-size: 20px; min-width: 0;}
+.assistant-bar select, .reasoning-select select {font-family: var(--pixel-font); font-size: 20px; padding: 4px 8px; max-width: 230px; min-height: 36px;}
+.assistant-bar button {font-size: 18px; min-height: 32px; padding: 3px 8px; box-shadow: 1px 1px 0 var(--shadow);}
+.assistant-description {font-size: 11px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; min-width: 100px;}
+.reasoning-select {min-width: 0;}
+.reasoning-select select {max-width: 210px; font-size: 20px;}
+.retro-dialog {padding: 0; border: 2px solid var(--line); color: var(--ink); background: var(--surface); box-shadow: 7px 7px 0 var(--shadow); max-width: calc(100vw - 36px); max-height: 92dvh;}
+.retro-dialog[open] {display: flex; flex-direction: column;}
+.retro-dialog::backdrop {background: #19170fc9;}
+.dialog-heading {display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 13px 20px; background: var(--raised); border-bottom: 2px solid var(--line); flex-shrink: 0;}
+.dialog-heading h2 {margin: 0; font-family: var(--pixel-font); font-weight: 500; font-size: 28px;}
+.dialog-heading .icon-button {border: 0; box-shadow: none; background: transparent; min-height: 34px; padding: 7px;}
+.profile-manager {width: 1080px; height: min(860px, 92dvh);}
+.manager-layout {display: grid; grid-template-columns: 205px minmax(0, 1fr); flex: 1; min-height: 0; overflow: hidden;}
+.profile-list {padding: 18px 12px; border-right: 2px solid var(--soft-line); background: var(--sidebar); min-height: 0; overflow-y: auto;}
+.profile-list button {width: 100%; display: flex; margin-bottom: 10px; justify-content: flex-start; text-align: left; overflow-wrap: anywhere; font-size: 20px; box-shadow: none; border-color: transparent; background: transparent; padding: 8px;}
+.profile-list button.primary {background: var(--accent); color: var(--accent-ink); margin-bottom: 22px; border-color: var(--line); font-size: 19px;}
+.profile-list button[aria-current='true'] {background: var(--selected); border-color: var(--focus); color: var(--selected-ink);}
+.profile-form {display: flex; flex-direction: column; align-items: stretch; gap: 12px; padding: 20px 23px; overflow: auto; min-height: 0; min-width: 0; margin: 0;}
+.profile-form fieldset {display: flex; flex-direction: column; gap: 13px; border: 0; padding: 0; margin: 0; min-width: 0;}
+.profile-form label {display: flex; flex-direction: column; gap: 6px; font-family: var(--pixel-font); font-size: 21px; min-width: 0;}
+.profile-form input:not([type='file']), .profile-form textarea, .profile-form select {width: 100%; min-width: 0; padding: 9px 11px; border: 1px solid var(--line); color: var(--ink); background: var(--canvas); font-family: 'Cascadia Mono', Consolas, monospace; font-size: 13px; line-height: 1.6; box-shadow: none;}
+.profile-form input:not([type='file']) {min-height: 40px;}
+.profile-form textarea {flex: none; min-height: 86px; max-height: none; resize: vertical;}
+.profile-form small, .profile-footnote, .delete-confirm > span {font-family: 'Cascadia Mono', Consolas, monospace; font-size: 11px; line-height: 1.7; color: var(--muted);}
+.profile-form small {display: block;}
+.profile-form > p {font-size: 13px;}
+.profile-form .notice {margin: 0;}
+.field-row {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px;}
+.import-row {display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; justify-content: space-between;}
+.profile-form .import-label {font-size: 18px;}
+.import-label input {font-family: 'Cascadia Mono', Consolas, monospace; font-size: 11px; max-width: 100%;}
+.import-label input::file-selector-button {border: 1px solid var(--line); color: var(--ink); background: var(--raised); padding: 5px 9px; font: inherit; cursor: pointer; margin-right: 8px;}
+.dialog-actions {display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 5px;}
+.dialog-actions button {font-size: 20px;}
+.dialog-actions .delete-button {color: var(--bad); margin-left: auto;}
+.delete-confirm {display: flex; flex-wrap: wrap; align-items: center; gap: 10px; width: 100%; border: 1px solid var(--bad); padding: 12px;}
+.profile-footnote {margin: 3px 0 0; padding-top: 12px; border-top: 1px solid var(--soft-line);}
+.save-notice {border: 1px solid var(--good); color: var(--good); padding: 10px 12px; margin: 0; font-size: 12px;}
+.context-editor {width: 720px;}
+.context-editor .profile-form {max-height: calc(92dvh - 65px);}
+.context-editor textarea {min-height: 250px; max-height: 50dvh;}
+@media (max-width: 1200px) {.reasoning-select select {font-size: 19px; max-width: 190px;} .assistant-description {display: none;}}
+@media (max-width: 700px) {
+  .assistant-bar {padding: 8px 12px; gap: 8px 10px;}
+  .assistant-bar > label {font-size: 18px; gap: 6px; flex: 1;}
+  .assistant-bar select {max-width: 190px; min-width: 0; width: 100%; font-size: 18px; min-height: 33px;}
+  .assistant-bar button {font-size: 16px; min-height: 32px;}
+  .reasoning-select {flex-shrink: 0;}
+  .reasoning-select select {font-size: 18px; max-width: 170px; min-height: 35px;}
+  .retro-dialog {max-width: calc(100vw - 18px); max-height: 94dvh;}
+  .dialog-heading {padding: 10px 13px;}.dialog-heading h2 {font-size: 25px;}
+  .profile-manager {height: 94dvh;}
+  .manager-layout {grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr);}
+  .profile-list {display: flex; gap: 8px; padding: 10px; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--line);}
+  .profile-list button, .profile-list button.primary {width: auto; margin: 0; flex-shrink: 0; font-size: 18px; white-space: nowrap; max-width: 240px; overflow: hidden; text-overflow: ellipsis;}
+  .profile-form {padding: 16px 14px;}.profile-form label {font-size: 20px;}
+  .field-row {grid-template-columns: minmax(0, 1fr); gap: 12px;}
+  .profile-form input:not([type='file']), .profile-form textarea, .profile-form select {font-size: 16px;}
+  .dialog-actions button {font-size: 19px;}.profile-form textarea {min-height: 110px;}
+  .context-editor textarea {max-height: 45dvh; min-height: 180px;}
+}

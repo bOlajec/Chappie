@@ -1,0 +1,26 @@
+{
+  "scripts": [
+    {
+      "name": "text_stats",
+      "file": "text_stats.py",
+      "description": "Count words, characters, and lines in text supplied by the user.",
+      "parameters": {
+        "type": "object",
+        "properties": {"text": {"type": "string", "maxLength": 4000, "description": "The text to analyze"}},
+        "required": ["text"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "add_numbers",
+      "file": "add_numbers.py",
+      "description": "Calculate the sum of a list of numbers using a saved Python script.",
+      "parameters": {
+        "type": "object",
+        "properties": {"numbers": {"type": "array", "items": {"type": "number"}, "minItems": 1, "maxItems": 100}},
+        "required": ["numbers"],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

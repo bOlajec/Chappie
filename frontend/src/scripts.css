@@ -1,0 +1,28 @@
+.script-access-control {display: flex; align-items: center; gap: 7px; font-family: var(--pixel-font); font-size: 19px; cursor: pointer; white-space: nowrap;}
+.script-access-control input {width: 16px; height: 16px; accent-color: var(--accent); margin: 0;}
+.script-access-control:has(input:disabled) {opacity: .55; cursor: default;}
+.profile-form .profile-tool-permission {flex-direction: row; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid var(--soft-line); background: var(--raised);}
+.profile-tool-permission input {width: 17px; height: 17px; accent-color: var(--accent);}
+.scripts-dialog {width: 780px;}
+.scripts-panel-body {padding: 20px 24px; overflow: auto; font-size: 13px;}
+.scripts-panel-body > p {overflow-wrap: anywhere;}
+.scripts-panel-body code {background: var(--raised); padding: 2px 5px; white-space: normal;}
+.script-isolation {color: var(--muted); font-size: 12px;}
+.scripts-panel-toolbar {display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 0 15px; font-family: var(--pixel-font); font-size: 21px;}
+.scripts-panel-toolbar button {font-size: 19px;}
+.scripts-panel-body .notice {margin: 0 0 15px;}
+.script-entry {border: 1px solid var(--line); padding: 15px; background: var(--canvas); margin-bottom: 15px;}
+.script-entry h3 {font-family: var(--pixel-font); font-size: 23px; margin: 0 0 8px; display: flex; align-items: center; gap: 10px;}
+.script-entry p {margin-bottom: 8px;}
+.script-entry small {color: var(--muted);}
+.script-entry details {margin-top: 10px;}
+.script-entry summary, .script-result summary {font-family: var(--pixel-font); font-size: 18px; cursor: pointer;}
+.script-entry pre {font-size: 12px; margin-top: 10px; border: 1px solid var(--soft-line);}
+.message-tool .message-avatar {color: var(--muted);}
+.script-result {border: 1px solid var(--line); background: var(--raised); padding: 12px 16px;}
+.script-result-heading {display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-family: var(--pixel-font); font-size: 21px;}
+.script-output-preview {font-size: 13px; white-space: pre-wrap; overflow-wrap: anywhere; margin: 8px 0;}
+.script-result details {border-top: 1px solid var(--soft-line); margin-top: 10px; padding-top: 8px;}
+.script-output {font-size: 12px; margin-top: 10px;}
+.script-output pre {font-size: 12px; white-space: pre-wrap; overflow-wrap: anywhere; background: var(--surface); padding: 10px; margin: 5px 0 12px; max-height: 260px;}
+@media (max-width: 700px) {.scripts-panel-body {padding: 16px 14px;} .script-access-control {font-size: 17px;} .script-result {padding: 10px;} .script-result-heading {font-size: 18px;} .script-output-preview {font-size: 12px;}}

@@ -1,0 +1,62 @@
+services:
+  script-runner:
+    build: ./script_runner
+    network_mode: none
+    read_only: true
+    init: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 64
+    mem_limit: 256m
+    cpus: 1.0
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    environment:
+      SCRIPT_TIMEOUT_SECONDS: ${SCRIPT_TIMEOUT_SECONDS:-30}
+      SCRIPT_OUTPUT_BYTES: ${SCRIPT_OUTPUT_BYTES:-32768}
+    volumes:
+      - ./scripts:/scripts:ro
+      - runner-socket:/run/script-runner
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.socket(socket.AF_UNIX); s.settimeout(2); s.connect('/run/script-runner/runner.sock'); s.close()"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 20s
+  backend:
+    build: ./backend
+    environment:
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      DATABASE_URL: sqlite:////app/data/chats.db
+      OLLAMA_READ_TIMEOUT: ${OLLAMA_READ_TIMEOUT:-180}
+      OLLAMA_KEEP_ALIVE: ${OLLAMA_KEEP_ALIVE:-10m}
+      CHAT_RESPONSE_STYLE: ${CHAT_RESPONSE_STYLE:-concise}
+      SCRIPT_TOOLS_ENABLED: ${SCRIPT_TOOLS_ENABLED:-true}
+      SCRIPT_MAX_CALLS: ${SCRIPT_MAX_CALLS:-4}
+    volumes:
+      - chat-data:/app/data
+      - runner-socket:/run/script-runner:ro
+    depends_on:
+      script-runner:
+        condition: service_healthy
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health')"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 20s
+  frontend:
+    build: ./frontend
+    ports:
+      - "127.0.0.1:${APP_PORT:-8080}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+volumes:
+  chat-data:
+  runner-socket:
