@@ -12,6 +12,10 @@ for (const [name, language] of Object.entries({python, javascript, typescript, j
   hljs.registerLanguage(name, language);
 }
 
+export function ChappieIcon() {
+  return <img className="pixel-icon chappie-icon" src="/chappie-icon.png" alt="" aria-hidden="true" width={48} height={48}/>;
+}
+
 type IconName = 'chat' | 'plus' | 'search' | 'send' | 'stop' | 'copy' | 'sun' | 'moon' | 'tools' | 'menu' | 'close' | 'refresh';
 const paths: Record<IconName, string> = {
   chat: 'M3 1h10v1h2v10h-2v1H7v1H5v1H3v-3H1V3h2V1zm0 3v6h2v2l2-2h6V4H3zm2 2h2v2H5V6zm4 0h2v2H9V6z',

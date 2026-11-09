@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { MessageContent, PixelIcon } from './components';
+import { ChappieIcon, MessageContent, PixelIcon } from './components';
 import { api, jsonRequest } from './api';
 import { AssistantManager, ProjectContextEditor, type AssistantProfile, type ReasoningMode } from './assistants';
 import { SavedScriptsPanel, ScriptResult, type ScriptCatalog } from './savedScripts';
@@ -298,7 +298,7 @@ function App() {
     {scriptsPanelOpen && <SavedScriptsPanel catalog={scriptCatalog} refresh={refreshScripts} onClose={() => setScriptsPanelOpen(false)}/>}
     {sidebarOpen && <button className="sidebar-backdrop" aria-label="Close chat sidebar" onClick={() => setSidebarOpen(false)}/>}
     <aside className={`sidebar ${sidebarOpen ? 'is-open' : ''}`} aria-label="Chat sidebar">
-      <div className="brand"><PixelIcon name="chat"/><h1>Chappie</h1><button className="icon-button mobile-only" aria-label="Close sidebar" onClick={() => setSidebarOpen(false)}><PixelIcon name="close"/></button></div>
+      <div className="brand"><ChappieIcon/><h1>Chappie</h1><button className="icon-button mobile-only" aria-label="Close sidebar" onClick={() => setSidebarOpen(false)}><PixelIcon name="close"/></button></div>
       <button className="new-chat primary" disabled={busy} onClick={newChat}><PixelIcon name="plus"/>New chat</button>
       <label className="search"><PixelIcon name="search"/><span className="sr-only">Search chats</span><input type="search" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search chats"/></label>
       <nav className="chat-list" aria-label="Previous chats">
@@ -356,9 +356,9 @@ function App() {
       </div>
       <section className="messages" aria-label="Chat messages" aria-live="polite" aria-relevant="additions text" onScroll={e => {const el = e.currentTarget; followOutput.current = el.scrollHeight - el.scrollTop - el.clientHeight < 100;}}>
         <div className="conversation">
-          {!chat?.messages.length && <div className="empty-state"><div className="empty-icon"><PixelIcon name="chat"/></div><p className="empty-title">A little space to think.</p><p>Choose a model, type a message, and make yourself at home.</p><span className="empty-badge">Your models. Your conversations.</span></div>}
+          {!chat?.messages.length && <div className="empty-state"><div className="empty-icon"><ChappieIcon/></div><p className="empty-title">A little space to think.</p><p>Choose a model, type a message, and make yourself at home.</p><span className="empty-badge">Your models. Your conversations.</span></div>}
           {chat?.messages.map((message, index) => <article className={`message message-${message.role}`} key={message.id}>
-            <div className="message-avatar" aria-hidden="true">{message.role === 'assistant' ? <PixelIcon name="chat"/> : message.role === 'tool' ? <PixelIcon name="tools"/> : <span>YOU</span>}</div>
+            <div className="message-avatar" aria-hidden="true">{message.role === 'assistant' ? <ChappieIcon/> : message.role === 'tool' ? <PixelIcon name="tools"/> : <span>YOU</span>}</div>
             <div className="message-body">
               <span className="sr-only">{message.role}</span>
               <div className="content">{message.role === 'tool' ? <ScriptResult content={message.content} status={message.status}/> : message.content ? message.role === 'assistant' ? <MessageContent content={message.content} streaming={message.status === 'streaming'}/> : <div className="prose">{message.content}</div> : <span className="waiting-text">{message.tool_calls?.length ? 'Called saved scripts' : message.status === 'streaming' ? 'Waiting for response…' : '(No response content)'}</span>}</div>
@@ -380,7 +380,7 @@ function App() {
           <textarea ref={composer} id="message" value={draft} disabled={busy} rows={2} maxLength={100000} onChange={e => setDraft(e.target.value)} onKeyDown={e => {if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) {e.preventDefault(); e.currentTarget.form?.requestSubmit();}}} placeholder="Message your model…"/>
           {busy && controller.current ? <button className="send-button stop-button" type="button" aria-label="Stop" title="Stop generating" onClick={() => controller.current?.abort()}><PixelIcon name="stop"/></button> : <button className="send-button primary" aria-label="Send" title="Send message" disabled={busy || checkingModel || !draft.trim() || !model || (useScripts && !scriptCatalog?.available)}><PixelIcon name="send"/></button>}
         </form>
-        <div className="composer-hint"><span>Enter to send <span className="hint-divider">·</span> Shift+Enter for a new line</span><span className="local-label"><PixelIcon name="chat"/> Chappie</span></div>
+        <div className="composer-hint"><span>Enter to send <span className="hint-divider">·</span> Shift+Enter for a new line</span><span className="local-label"><ChappieIcon/> Chappie</span></div>
       </div>
     </main>
   </div>;
