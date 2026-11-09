@@ -4,7 +4,7 @@ A React + TypeScript + Vite client with a FastAPI backend. Ollama runs on your m
 
 ## Retro interface
 
-The frontend uses an off-beige pixel-inspired light theme and a warm charcoal dark theme, both with navy-blue interaction accents. Switch themes at the bottom of the sidebar; the choice is saved in this browser. On small screens, the menu button opens the sidebar. Chat search filters saved conversation titles, grouped into Today and Earlier.
+The frontend uses an off-beige pixel-inspired light theme and a clean gunmetal dark theme, both with navy-blue interaction accents. Dark mode adds subtle brushed-metal panels, a muted gold chain and dollar-sign pendant in the sidebar, and small orange robotic-arm and antenna details. The original Chappie icon is used throughout. Switch themes at the bottom of the sidebar; the choice is saved in this browser. On small screens, the menu button opens the sidebar. Chat search filters saved conversation titles, grouped into Today and Earlier.
 
 Replies preserve their original text. Fenced code blocks and recognizable plain Python/JavaScript replies appear in code panels with a Copy button. Common fenced languages have syntax highlighting after streaming finishes; unsupported languages remain plain code. Highlighting is also skipped for code blocks over 50,000 characters to keep the interface responsive. Display formatting never executes, repairs, or rewrites model-generated code. Connection details expand from the status strip, and response timing remains available below the last answer. Green/amber/red communicate health independently of the navy selection color.
 

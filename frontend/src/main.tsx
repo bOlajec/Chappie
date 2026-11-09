@@ -5,6 +5,7 @@ import { api, jsonRequest } from './api';
 import { AssistantManager, ProjectContextEditor, type AssistantProfile, type ReasoningMode } from './assistants';
 import { SavedScriptsPanel, ScriptResult, type ScriptCatalog } from './savedScripts';
 import './retro.css';
+import './gunmetal.css';
 
 type Chat = {id: string; title: string; model: string; updated_at: string; assistant_id: string | null; assistant_name: string | null; reasoning: ReasoningMode; script_tools_enabled: boolean};
 type ChatSettings = Chat & {assistant_snapshot: AssistantProfile | null; project_context: string};

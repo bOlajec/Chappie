@@ -1,0 +1,108 @@
+/* Dark-mode armor: decoration stays behind the working interface. */
+:root[data-theme='dark'] {
+  --canvas: #11171d; --sidebar: #1a232c; --surface: #1c2630; --raised: #27333e;
+  --ink: #f1e9d6; --muted: #acb8bf; --line: #647887; --soft-line: #364651;
+  --accent: #254c6c; --accent-ink: #fff2d5; --selected: #254660; --selected-ink: #fff3db; --focus: #9ecce5;
+  --good: #a9d49a; --caution: #e2b35d; --bad: #f29c8d; --warning-bg: #382d20;
+  --shadow: #080d12; --code-keyword: #79cfe9; --code-string: #b5ca89; --code-number: #d7afe6; --code-title: #ecd080;
+  --metal-grain: repeating-linear-gradient(0deg, #ffffff03 0 1px, transparent 1px 4px), repeating-linear-gradient(90deg, transparent 0 7px, #00000004 7px 8px);
+}
+[data-theme='dark'] .layout {
+  position: relative; isolation: isolate; padding: 9px; gap: 9px;
+  border: 2px solid #75838c;
+  background: var(--metal-grain), linear-gradient(135deg, #35414b, #18212a 35%, #26323c);
+  box-shadow: inset 0 0 0 3px #10171d, inset 0 0 0 5px #52616b;
+}
+[data-theme='dark'] .sidebar {
+  position: relative; isolation: isolate; border: 1px solid var(--line); padding: 24px 17px 18px;
+  background: url('./assets/antenna.svg') no-repeat 3px bottom / 15px 170px, var(--metal-grain), linear-gradient(110deg, #202b34, #18212a);
+  box-shadow: inset 1px 1px 0 #ffffff14, 2px 2px 0 #080d12;
+}
+[data-theme='dark'] .sidebar::before {
+  content: ''; position: absolute; z-index: -1; pointer-events: none;
+  left: 7px; right: 7px; bottom: 184px; height: 225px;
+  background: url('./assets/gold-chain.svg') center / contain no-repeat;
+  opacity: .23;
+}
+[data-theme='dark'] .brand {gap: 13px; margin: 0 0 24px;}
+[data-theme='dark'] .brand > .chappie-icon {width: 57px; height: 57px;}
+[data-theme='dark'] .brand h1 {font-size: 34px;}
+[data-theme='dark'] .sidebar-bottom {background: #19222bee; position: relative; padding-top: 15px;}
+[data-theme='dark'] .section-label {color: #bec8ce;}
+[data-theme='dark'] main {
+  border: 1px solid #4f606d;
+  background: url('./assets/robot-arm.svg') right bottom / 155px 155px no-repeat, var(--metal-grain), #11171d;
+  box-shadow: inset 1px 1px 0 #ffffff0b;
+}
+[data-theme='dark'] .topbar,
+[data-theme='dark'] .assistant-bar,
+[data-theme='dark'] .code-toolbar,
+[data-theme='dark'] .dialog-heading {
+  background: var(--metal-grain), linear-gradient(110deg, #293641, #1b252e);
+  box-shadow: inset 0 1px 0 #ffffff0b;
+}
+[data-theme='dark'] .topbar {border-bottom-width: 1px;}
+[data-theme='dark'] .assistant-description {display: none;}
+[data-theme='dark'] .connection-panel {background: #161f27; border-bottom-width: 1px;}
+[data-theme='dark'] .connection-panel summary {font-size: 18px;}
+[data-theme='dark'] button,
+[data-theme='dark'] select,
+[data-theme='dark'] .search {
+  border-width: 1px; background-color: #1c2731;
+  box-shadow: inset 0 1px 0 #ffffff12, 1px 2px 0 #080d12;
+}
+[data-theme='dark'] button:hover:not(:disabled) {background-color: #2d465a;}
+[data-theme='dark'] button.primary {
+  border-color: #6d9ebc; background: linear-gradient(#295574, #203e57);
+  box-shadow: inset 0 1px 0 #b4d6ed26, 2px 2px 0 #080d12;
+}
+[data-theme='dark'] button.primary:hover:not(:disabled) {background: #345e7c;}
+[data-theme='dark'] .chat-list button {background: transparent; box-shadow: none;}
+[data-theme='dark'] .chat-list button:hover:not(:disabled) {background: #243747;}
+[data-theme='dark'] .chat-list button[aria-current='page'] {background: #254660; border-color: #729eb9; box-shadow: inset 0 1px 0 #b4d6ed17;}
+[data-theme='dark'] .model-status,
+[data-theme='dark'] .icon-button {background: transparent; border: 0; box-shadow: none;}
+[data-theme='dark'] .message-assistant .message-body {
+  background: var(--metal-grain), linear-gradient(110deg, #202b35, #1b242d);
+  border-width: 1px; box-shadow: inset 0 1px 0 #ffffff0b, 2px 3px 0 #080d1266;
+}
+[data-theme='dark'] .message-user .message-body {background: #1d303e; border-width: 1px; border-color: #638ba3;}
+[data-theme='dark'] .code-panel {background: #10181f;}
+[data-theme='dark'] .composer-area {
+  position: relative; margin-bottom: 14px; width: calc(100% - 44px); padding: 0 14px 12px;
+  background: var(--metal-grain), linear-gradient(110deg, #202b35f5, #18212af5);
+  border: 1px solid #50616e; box-shadow: inset 0 1px 0 #ffffff12, 2px 3px 0 #080d12;
+}
+[data-theme='dark'] .composer-status {min-height: 32px;}
+[data-theme='dark'] textarea {background: #101920; border: 1px solid #86aec5; box-shadow: inset 1px 2px 0 #080d12;}
+[data-theme='dark'] .send-button.primary {background: linear-gradient(#c87329, #99501d); border-color: #eaa855; color: #fff0cd;}
+[data-theme='dark'] .send-button.primary:hover:not(:disabled) {background: #d28034;}
+[data-theme='dark'] .send-button:disabled {background: #333a3e; color: #a6afb2; border-color: #647078; box-shadow: none;}
+[data-theme='dark'] .theme-switch button[aria-pressed='true'] {background: #315b78;}
+[data-theme='dark'] .empty-icon {padding: 10px; border-width: 1px; background: #1c2731;}
+[data-theme='dark'] .empty-icon .chappie-icon {width: 64px; height: 64px;}
+@media (max-width: 1200px) {
+  [data-theme='dark'] .sidebar {padding-inline: 12px;}
+  [data-theme='dark'] .brand {gap: 10px;}
+  [data-theme='dark'] .brand > .chappie-icon {width: 46px; height: 46px;}
+  [data-theme='dark'] .brand h1 {font-size: 30px;}
+}
+@media (max-width: 700px) {
+  [data-theme='dark'] .layout {padding: 4px; gap: 0;}
+  [data-theme='dark'] .sidebar {position: fixed; padding: 22px 16px 18px;}
+  [data-theme='dark'] .sidebar::before {bottom: 184px; height: 210px;}
+  [data-theme='dark'] .brand > .chappie-icon {width: 44px; height: 44px;}
+  [data-theme='dark'] .brand h1 {font-size: 29px;}
+  [data-theme='dark'] main {background-size: 90px 90px, auto, auto;}
+  [data-theme='dark'] .composer-area {width: calc(100% - 16px); padding: 0 9px max(10px, env(safe-area-inset-bottom)); margin-bottom: 8px;}
+  [data-theme='dark'] .connection-panel summary {font-size: 15px;}
+  [data-theme='dark'] .assistant-bar {padding: 9px 12px; gap: 8px 12px;}
+  [data-theme='dark'] .assistant-bar > label:first-child {flex: 1 1 100%;}
+  [data-theme='dark'] .assistant-bar select {flex: 1; min-width: 0; max-width: 100%;}
+  [data-theme='dark'] .assistant-bar .script-access-control {font-size: 17px;}
+  [data-theme='dark'] .sidebar-backdrop,
+  [data-theme='dark'] .sidebar-backdrop:hover:not(:disabled) {background: #080d12b3; border: 0; box-shadow: none;}
+}
+@media (max-height: 600px) {
+  [data-theme='dark'] .sidebar::before {opacity: .12; height: 140px;}
+}

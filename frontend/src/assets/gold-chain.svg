@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220" fill="none" shape-rendering="crispEdges">
+  <defs>
+    <g id="link">
+      <path d="M0 0h21v12H0z" stroke="#a88639" stroke-width="4"/>
+      <path d="M2 0h17M0 2v7" stroke="#ddbb65" stroke-width="2"/>
+      <path d="M3 12h18V3" stroke="#624b22" stroke-width="2"/>
+    </g>
+  </defs>
+  <use href="#link" transform="translate(-5 12) rotate(60)"/>
+  <use href="#link" transform="translate(6 32) rotate(57)"/>
+  <use href="#link" transform="translate(19 51) rotate(52)"/>
+  <use href="#link" transform="translate(34 69) rotate(47)"/>
+  <use href="#link" transform="translate(51 86) rotate(40)"/>
+  <use href="#link" transform="translate(70 101) rotate(32)"/>
+  <use href="#link" transform="translate(91 113) rotate(23)"/>
+  <use href="#link" transform="translate(114 121) rotate(12)"/>
+  <use href="#link" transform="translate(138 125)"/>
+  <use href="#link" transform="translate(162 125) rotate(-12)"/>
+  <use href="#link" transform="translate(185 120) rotate(-23)"/>
+  <use href="#link" transform="translate(207 111) rotate(-32)"/>
+  <use href="#link" transform="translate(227 99) rotate(-40)"/>
+  <use href="#link" transform="translate(245 84) rotate(-47)"/>
+  <use href="#link" transform="translate(261 67) rotate(-52)"/>
+  <use href="#link" transform="translate(275 48) rotate(-57)"/>
+  <use href="#link" transform="translate(287 28) rotate(-60)"/>
+  <path d="M145 135h10v17h-10z" stroke="#b59346" stroke-width="4"/>
+  <path d="M147 151h7v60h-7zM135 157h31v8h-28v12h23v7h8v17h-8v6h-30v-9h29v-13h-23v-7h-8v-14h6z" fill="#b59346"/>
+  <path d="M135 157h31v3h-31zM147 151h3v60h-3z" fill="#e2c26f"/>
+</svg>
