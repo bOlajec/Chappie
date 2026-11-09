@@ -17,7 +17,7 @@ type ModelInfo = {model: string; supports_thinking: boolean | null; supports_too
 type Theme = 'light' | 'dark';
 
 function initialTheme(): Theme {
-  try {return localStorage.getItem('local-llm-theme') === 'dark' ? 'dark' : 'light';}
+  try {return localStorage.getItem('chappie-theme') === 'dark' ? 'dark' : 'light';}
   catch {return 'light';}
 }
 
@@ -73,7 +73,7 @@ function App() {
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-    try {localStorage.setItem('local-llm-theme', theme);} catch { /* Theme still works when storage is unavailable. */ }
+    try {localStorage.setItem('chappie-theme', theme);} catch { /* Theme still works when storage is unavailable. */ }
   }, [theme]);
   useEffect(() => {
     if (!sidebarOpen) return;
@@ -298,7 +298,7 @@ function App() {
     {scriptsPanelOpen && <SavedScriptsPanel catalog={scriptCatalog} refresh={refreshScripts} onClose={() => setScriptsPanelOpen(false)}/>}
     {sidebarOpen && <button className="sidebar-backdrop" aria-label="Close chat sidebar" onClick={() => setSidebarOpen(false)}/>}
     <aside className={`sidebar ${sidebarOpen ? 'is-open' : ''}`} aria-label="Chat sidebar">
-      <div className="brand"><PixelIcon name="chat"/><h1>Local LLM</h1><button className="icon-button mobile-only" aria-label="Close sidebar" onClick={() => setSidebarOpen(false)}><PixelIcon name="close"/></button></div>
+      <div className="brand"><PixelIcon name="chat"/><h1>Chappie</h1><button className="icon-button mobile-only" aria-label="Close sidebar" onClick={() => setSidebarOpen(false)}><PixelIcon name="close"/></button></div>
       <button className="new-chat primary" disabled={busy} onClick={newChat}><PixelIcon name="plus"/>New chat</button>
       <label className="search"><PixelIcon name="search"/><span className="sr-only">Search chats</span><input type="search" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search chats"/></label>
       <nav className="chat-list" aria-label="Previous chats">
@@ -380,7 +380,7 @@ function App() {
           <textarea ref={composer} id="message" value={draft} disabled={busy} rows={2} maxLength={100000} onChange={e => setDraft(e.target.value)} onKeyDown={e => {if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) {e.preventDefault(); e.currentTarget.form?.requestSubmit();}}} placeholder="Message your model…"/>
           {busy && controller.current ? <button className="send-button stop-button" type="button" aria-label="Stop" title="Stop generating" onClick={() => controller.current?.abort()}><PixelIcon name="stop"/></button> : <button className="send-button primary" aria-label="Send" title="Send message" disabled={busy || checkingModel || !draft.trim() || !model || (useScripts && !scriptCatalog?.available)}><PixelIcon name="send"/></button>}
         </form>
-        <div className="composer-hint"><span>Enter to send <span className="hint-divider">·</span> Shift+Enter for a new line</span><span className="local-label"><PixelIcon name="chat"/> Local LLM</span></div>
+        <div className="composer-hint"><span>Enter to send <span className="hint-divider">·</span> Shift+Enter for a new line</span><span className="local-label"><PixelIcon name="chat"/> Chappie</span></div>
       </div>
     </main>
   </div>;

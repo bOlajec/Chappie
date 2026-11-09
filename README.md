@@ -1,4 +1,4 @@
-# Local LLM Interface — milestone 1
+# Chappie — milestone 1
 
 A React + TypeScript + Vite client with a FastAPI backend. Ollama runs on your model computer; Tailscale runs on the hosts. Docker Compose runs the interface on your client computer. SQLite stores conversations in a named Docker volume, managed through SQLAlchemy and Alembic.
 

@@ -25,7 +25,7 @@ async def lifespan(app):
     yield
 
 
-app = FastAPI(title='Local LLM Interface', lifespan=lifespan)
+app = FastAPI(title='Chappie', lifespan=lifespan)
 app.include_router(profiles_router)
 
 
