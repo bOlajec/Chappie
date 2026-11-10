@@ -1,28 +1,40 @@
-/* Dark-mode armor: decoration stays behind the working interface. */
+/* Artwork mounts to panel edges; controls retain a clear working area. */
+.sidebar-necklace, .composer-arm {display: none;}
+.composer-dock {display: contents;}
 :root[data-theme='dark'] {
   --canvas: #11171d; --sidebar: #1a232c; --surface: #1c2630; --raised: #27333e;
   --ink: #f1e9d6; --muted: #acb8bf; --line: #647887; --soft-line: #364651;
   --accent: #254c6c; --accent-ink: #fff2d5; --selected: #254660; --selected-ink: #fff3db; --focus: #9ecce5;
   --good: #a9d49a; --caution: #e2b35d; --bad: #f29c8d; --warning-bg: #382d20;
   --shadow: #080d12; --code-keyword: #79cfe9; --code-string: #b5ca89; --code-number: #d7afe6; --code-title: #ecd080;
-  --metal-grain: repeating-linear-gradient(0deg, #ffffff03 0 1px, transparent 1px 4px), repeating-linear-gradient(90deg, transparent 0 7px, #00000004 7px 8px);
+  --metal-grain: url('./assets/gunmetal-surface.png');
 }
 [data-theme='dark'] .layout {
-  position: relative; isolation: isolate; padding: 9px; gap: 9px;
+  grid-template-columns: clamp(245px, 21vw, 330px) minmax(0, 1fr);
+  position: relative; isolation: isolate; padding: 15px 15px 15px 48px; gap: 12px;
   border: 2px solid #75838c;
-  background: var(--metal-grain), linear-gradient(135deg, #35414b, #18212a 35%, #26323c);
+  background: linear-gradient(135deg, #82939d22, #10141888 35%, #66778322), var(--metal-grain);
+  background-size: auto, 640px;
   box-shadow: inset 0 0 0 3px #10171d, inset 0 0 0 5px #52616b;
 }
 [data-theme='dark'] .sidebar {
   position: relative; isolation: isolate; border: 1px solid var(--line); padding: 24px 17px 18px;
-  background: url('./assets/antenna.svg') no-repeat 3px bottom / 15px 170px, var(--metal-grain), linear-gradient(110deg, #202b34, #18212a);
-  box-shadow: inset 1px 1px 0 #ffffff14, 2px 2px 0 #080d12;
+  background: linear-gradient(110deg, #ffffff06, #0b101655), var(--metal-grain);
+  background-size: auto, 640px;
+  box-shadow: inset 0 0 0 3px #11171d, inset 0 0 0 4px #ffffff0a, 2px 2px 0 #080d12;
 }
-[data-theme='dark'] .sidebar::before {
-  content: ''; position: absolute; z-index: -1; pointer-events: none;
-  left: 7px; right: 7px; bottom: 184px; height: 225px;
-  background: url('./assets/gold-chain.svg') center / contain no-repeat;
-  opacity: .23;
+[data-theme='dark'] .sidebar::after {
+  content: ''; position: absolute; z-index: 2; pointer-events: none;
+  left: -46px; bottom: 0; width: 60px; height: min(390px, 47vh);
+  background: url('./assets/antenna-v2.png') center bottom / auto 100% no-repeat;
+  filter: drop-shadow(2px 2px 1px #0008);
+}
+[data-theme='dark'] .sidebar-necklace {
+  display: block; pointer-events: none; position: absolute; z-index: -1;
+  left: 0; right: 0; bottom: 190px; height: min(260px, 32vh);
+  background: url('./assets/gold-chain-v2.png') center / contain no-repeat;
+  opacity: .16; filter: saturate(.65) drop-shadow(1px 3px 1px #000b);
+  mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 88%, transparent);
 }
 [data-theme='dark'] .brand {gap: 13px; margin: 0 0 24px;}
 [data-theme='dark'] .brand > .chappie-icon {width: 57px; height: 57px;}
@@ -31,14 +43,16 @@
 [data-theme='dark'] .section-label {color: #bec8ce;}
 [data-theme='dark'] main {
   border: 1px solid #4f606d;
-  background: url('./assets/robot-arm.svg') right bottom / 155px 155px no-repeat, var(--metal-grain), #11171d;
+  background: radial-gradient(ellipse at 40% 15%, #151c23eb, #0d1319fa), var(--metal-grain);
+  background-size: auto, 640px;
   box-shadow: inset 1px 1px 0 #ffffff0b;
 }
 [data-theme='dark'] .topbar,
 [data-theme='dark'] .assistant-bar,
 [data-theme='dark'] .code-toolbar,
 [data-theme='dark'] .dialog-heading {
-  background: var(--metal-grain), linear-gradient(110deg, #293641, #1b252e);
+  background: linear-gradient(110deg, #ffffff08, #0b10164d), var(--metal-grain);
+  background-size: auto, 640px;
   box-shadow: inset 0 1px 0 #ffffff0b;
 }
 [data-theme='dark'] .topbar {border-bottom-width: 1px;}
@@ -63,14 +77,26 @@
 [data-theme='dark'] .model-status,
 [data-theme='dark'] .icon-button {background: transparent; border: 0; box-shadow: none;}
 [data-theme='dark'] .message-assistant .message-body {
-  background: var(--metal-grain), linear-gradient(110deg, #202b35, #1b242d);
+  background: linear-gradient(110deg, #ffffff05, #0b101640), var(--metal-grain);
+  background-size: auto, 640px;
   border-width: 1px; box-shadow: inset 0 1px 0 #ffffff0b, 2px 3px 0 #080d1266;
 }
 [data-theme='dark'] .message-user .message-body {background: #1d303e; border-width: 1px; border-color: #638ba3;}
 [data-theme='dark'] .code-panel {background: #10181f;}
+[data-theme='dark'] .composer-dock {
+  display: block; position: relative; isolation: isolate;
+  margin: 0 116px 27px 18px; flex-shrink: 0;
+}
+[data-theme='dark'] .composer-arm {
+  display: block; position: absolute; z-index: 10; right: -60px; bottom: -65px;
+  width: 340px; height: 227px; pointer-events: none;
+  background: url('./assets/robot-arm-v2.png') center / contain no-repeat;
+  image-rendering: pixelated; filter: saturate(.72) brightness(.82) drop-shadow(-3px -2px 2px #000a);
+}
 [data-theme='dark'] .composer-area {
-  position: relative; margin-bottom: 14px; width: calc(100% - 44px); padding: 0 14px 12px;
-  background: var(--metal-grain), linear-gradient(110deg, #202b35f5, #18212af5);
+  position: relative; margin: 0; width: 100%; max-width: none; min-width: 0; padding: 0 14px 12px;
+  background: linear-gradient(110deg, #ffffff06, #0b101644), var(--metal-grain);
+  background-size: auto, 640px;
   border: 1px solid #50616e; box-shadow: inset 0 1px 0 #ffffff12, 2px 3px 0 #080d12;
 }
 [data-theme='dark'] .composer-status {min-height: 32px;}
@@ -82,19 +108,29 @@
 [data-theme='dark'] .empty-icon {padding: 10px; border-width: 1px; background: #1c2731;}
 [data-theme='dark'] .empty-icon .chappie-icon {width: 64px; height: 64px;}
 @media (max-width: 1200px) {
+  [data-theme='dark'] .layout {grid-template-columns: 245px minmax(0, 1fr);}
+  [data-theme='dark'] .composer-dock {margin-left: 14px; margin-right: 90px;}
+  [data-theme='dark'] .composer-arm {width: 280px; height: 187px; right: -55px; bottom: -55px;}
   [data-theme='dark'] .sidebar {padding-inline: 12px;}
   [data-theme='dark'] .brand {gap: 10px;}
   [data-theme='dark'] .brand > .chappie-icon {width: 46px; height: 46px;}
   [data-theme='dark'] .brand h1 {font-size: 30px;}
 }
+@media (min-width: 701px) and (max-width: 980px) {
+  [data-theme='dark'] .layout {grid-template-columns: 225px minmax(0, 1fr);}
+  [data-theme='dark'] .composer-arm {display: none;}
+  [data-theme='dark'] .composer-dock {margin-right: 14px;}
+}
 @media (max-width: 700px) {
-  [data-theme='dark'] .layout {padding: 4px; gap: 0;}
+  [data-theme='dark'] .layout {grid-template-columns: minmax(0, 1fr); padding: 4px; gap: 0;}
   [data-theme='dark'] .sidebar {position: fixed; padding: 22px 16px 18px;}
-  [data-theme='dark'] .sidebar::before {bottom: 184px; height: 210px;}
+  [data-theme='dark'] .sidebar::after {display: none;}
+  [data-theme='dark'] .sidebar-necklace {height: 200px; bottom: 190px;}
   [data-theme='dark'] .brand > .chappie-icon {width: 44px; height: 44px;}
   [data-theme='dark'] .brand h1 {font-size: 29px;}
-  [data-theme='dark'] main {background-size: 90px 90px, auto, auto;}
-  [data-theme='dark'] .composer-area {width: calc(100% - 16px); padding: 0 9px max(10px, env(safe-area-inset-bottom)); margin-bottom: 8px;}
+  [data-theme='dark'] .composer-dock {display: block; margin: 0 8px 8px;}
+  [data-theme='dark'] .composer-arm {display: none;}
+  [data-theme='dark'] .composer-area {width: 100%; padding: 0 9px max(10px, env(safe-area-inset-bottom));}
   [data-theme='dark'] .connection-panel summary {font-size: 15px;}
   [data-theme='dark'] .assistant-bar {padding: 9px 12px; gap: 8px 12px;}
   [data-theme='dark'] .assistant-bar > label:first-child {flex: 1 1 100%;}
@@ -104,5 +140,5 @@
   [data-theme='dark'] .sidebar-backdrop:hover:not(:disabled) {background: #080d12b3; border: 0; box-shadow: none;}
 }
 @media (max-height: 600px) {
-  [data-theme='dark'] .sidebar::before {opacity: .12; height: 140px;}
+  [data-theme='dark'] .sidebar-necklace {height: 120px; opacity: .12;}
 }

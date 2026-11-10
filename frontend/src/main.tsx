@@ -310,6 +310,7 @@ function App() {
         {!chats.length && <p className="sidebar-empty">Your conversations will appear here.</p>}
         {!!chats.length && !filteredChats.length && <p className="sidebar-empty">No matching chats.</p>}
       </nav>
+      <div className="sidebar-necklace" aria-hidden="true"/>
       <div className="sidebar-bottom">
         <button className="manage-assistants" disabled={busy} onClick={() => {setProfileManagerOpen(true); setSidebarOpen(false);}}><PixelIcon name="chat"/>Assistant profiles</button>
         <button className="future-tools" onClick={() => {setScriptsPanelOpen(true); setSidebarOpen(false);}}><PixelIcon name="tools"/><span>Saved scripts <small>· {scriptCatalog?.available ? scriptCatalog.scripts.length : 'Offline'}</small></span></button>
@@ -374,6 +375,7 @@ function App() {
           <div ref={bottom}/>
         </div>
       </section>
+      <div className="composer-dock">
       <div className="composer-area">
         <div className="composer-status" role="status">{busy ? <><span className="busy-pixel"/>{stage || 'Loading chat…'}</> : <span>{model ? `${activeProfile?.name ?? 'General assistant'} · ${model}` : 'Connect a model to begin'}</span>}</div>
         <form onSubmit={send}>
@@ -383,7 +385,9 @@ function App() {
         </form>
         <div className="composer-hint"><span>Enter to send <span className="hint-divider">·</span> Shift+Enter for a new line</span><span className="local-label"><ChappieIcon/> Chappie</span></div>
       </div>
+      </div>
     </main>
+    <div className="composer-arm" aria-hidden="true"/>
   </div>;
 }
 
